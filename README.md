@@ -20,6 +20,7 @@ var sinks=[{x:0.4,y:1,a:0}];
 
 Once you open index.html in your browser, all objects can be dragged and dropped, all objects can be rotated by using the mouse wheel. Lasers update in real time. Once a laser hits a sink its ray turns green.
 
-# Tested to work with Chrome and Firefox. Neither know nor care about IE.
+# Browser support
+Only tested with Chrome and Firefox.
 
 Have fun.
