@@ -6,6 +6,9 @@ Little Javascript Laser/Mirror/Reflection Simulator
 # Intro
 I wrote this little laser simulator for a small side project of mine. It is meant to simulate a real life laser puzzle. All mirrors are meant to be mosaic tiles of equal size, assembled into squares and rectangles. Lasers are meant to hit sinks. This is to be acchieved by rotating the mirror pieces. Blocks prevent easy solutions.
 
+# Demo
+[Link](http://maxbuegler.eu/laser-simulator/)
+
 All measures are ratios of the full canvas. The size of a mirror tile can be defined as follows:
 ```
 var mirrorsize=0.03;
