@@ -200,14 +200,6 @@ function draw(){
         y3=blocks[i].y+d*Math.cos(Math.PI+a+r);
         x4=blocks[i].x+d*Math.sin(-a+r);
         y4=blocks[i].y+d*Math.cos(-a+r);                    
-        /*x1=blocks[i].x-blocks[i].w/2;
-        y1=blocks[i].y-blocks[i].h/2;
-        x2=blocks[i].x+blocks[i].w/2;
-        y2=blocks[i].y-blocks[i].h/2;
-        x3=blocks[i].x+blocks[i].w/2;
-        y3=blocks[i].y+blocks[i].h/2;
-        x4=blocks[i].x-blocks[i].w/2;
-        y4=blocks[i].y+blocks[i].h;*/
         ctx.beginPath();
         ctx.moveTo(x1*width,y1*height);
         ctx.lineTo(x2*width,y2*height);
@@ -410,7 +402,7 @@ canvas.addEventListener('mousedown',function(event){
 });
 
 
-canvas.addEventListener('mouseup',function(event){
+canvas.addEventListener('mouseup',function(){
     dragged=null;
 });
 
