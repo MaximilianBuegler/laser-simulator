@@ -18,7 +18,7 @@ var blocks=[{x:0.3,y:0.6,w:0.4,h:0.01}];
 var sinks=[{x:0.4,y:1,a:0}];
 ```
 
-Once you open index.html in your browser, all objects can be dragged and dropped, all objects can be rotated by using the mouse wheel. Lasers update in real time. Once a laser hits a sink its ray turns green.
+Once you open index.html in your browser, all objects can be dragged and dropped, all objects can be rotated by using the mouse wheel. Lasers update in real time. Once a laser hits a sink its ray turns green. Drag and rotate objects close to their center points.
 
 # Browser support
 Only tested with Chrome and Firefox.

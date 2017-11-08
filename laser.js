@@ -332,16 +332,26 @@ draw();
 
 var mouseWheelHandler=function(event){
     var delta=event.detail || event.deltaY;
+    var rect = canvas.getBoundingClientRect();
+    var mx=event.clientX-rect.left;
+    var my=event.clientY-rect.top;    
     var xp,yp,i;
+    var minDist=0;
+    var minI=-1;
     for (i=0;i<objects.length;i++){
         xp=objects[i].x*width;
         yp=objects[i].y*height;
-        if (Math.sqrt(Math.pow(xp-event.layerX,2)+Math.pow(yp-event.layerY,2))<20){
-            objects[i].a+=Math.sign(delta)*0.5;
-            draw();
-            return false;
+        dist=Math.sqrt(Math.pow(xp-mx,2)+Math.pow(yp-my,2));
+        if (minI<0 || dist<minDist && dist<50){
+            minDist=dist;
+            minI=i;
         }
     }
+    if (minI>-1){
+      objects[minI].a+=Math.sign(delta)*0.5;
+      draw();      
+    }
+    
     return false; };
   
 canvas.addEventListener('DOMMouseScroll',mouseWheelHandler,false);
@@ -351,26 +361,28 @@ canvas.addEventListener('onwheel',mouseWheelHandler,false);
 var dragged=null;
 
 canvas.addEventListener('mousedown',function(event){
-    var rect = canvas.getBoundingClientRect();
-    var mx=event.clientX-rect.left;
-    var my=event.clientY-rect.top;
-    var xp,yp,i;
-    for (i=0;i<objects.length;i++){
-        xp=objects[i].x*width;
-        yp=objects[i].y*height;
-        if (Math.sqrt(Math.pow(xp-mx,2)+Math.pow(yp-my,2))<20){
-            dragged=i;
-            return false;
-        }
-    }
     if (event.buttons==2){
       console.log(JSON.stringify(lasers));
       console.log(JSON.stringify(mirrortriangles));
       console.log(JSON.stringify(mirrorsquares));
       console.log(JSON.stringify(blocks));
       console.log(JSON.stringify(sinks));
+    }  
+    var rect = canvas.getBoundingClientRect();
+    var mx=event.clientX-rect.left;
+    var my=event.clientY-rect.top;
+    var xp,yp,i,dist;
+    var minDist=100000;
+    for (i=0;i<objects.length;i++){
+        xp=objects[i].x*width;
+        yp=objects[i].y*height;
+        dist=Math.sqrt(Math.pow(xp-mx,2)+Math.pow(yp-my,2));
+        if (dist<minDist && dist<50){
+            minDist=dist;
+            dragged=i;
+        }
     }
-
+    return false;
 });
 
 
