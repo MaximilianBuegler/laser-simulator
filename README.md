@@ -10,6 +10,11 @@ var mirrorsize=0.03;
 ```
 
 Laser sources, mirror triangles, mirror squares, sinks, and blocking areas can be defined as follows:
+x: horizontal position in ratio of canvas [0-1],
+y: vertical position in ratio of canvas [0-1],
+a: angle in degrees [0-360],
+w: width of block in ratio of canvas [0-1],
+h: height of block in ratio of canvas [0-1],
 ```
 var lasers=[{x:0,y:0.2,a:90},{x:1,y:0.1,a:270}];
 var mirrortriangles=[{x:0.5,y:0.2,a:0},{x:0.5,y:0.8,a:0},{x:0.2,y:0.8,a:0}];
