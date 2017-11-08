@@ -366,7 +366,7 @@ var mouseWheelHandler=function(event){
         xp=objects[i].x*width;
         yp=objects[i].y*height;
         dist=Math.sqrt(Math.pow(xp-mx,2)+Math.pow(yp-my,2));
-        if (minI<0 || dist<minDist && dist<50){
+        if ((minI<0 || dist<minDist) && dist<50){
             minDist=dist;
             minI=i;
         }
