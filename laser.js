@@ -100,7 +100,7 @@ function getIntersection(l1,l2){
         yi=m2*xi+b2;
         
         if (xi.between(l2.x1,l2.x2) && xi.between(l1.x1,l1.x2)&& yi.between(l1.y1,l1.y2)){
-            a=Math.atan(m2);
+            a=Math.atan(1/m2);
             d=Math.sqrt(Math.pow(xi-l1.x1,2)+Math.pow(yi-l1.y1,2));
             return {x:xi,y:yi,a:a,d:d};
         }
@@ -329,7 +329,7 @@ function draw(){
             else{
                 x2=earliestHit.x;
                 y2=earliestHit.y;
-                a=(laser.a+Math.PI*(earliestHit.a/(Math.PI/2)))%(2*Math.PI);
+                a=(laser.a+Math.PI*(earliestHit.a/(Math.PI/2)));
                 laserx2=x2+2*Math.sin(a);
                 lasery2=y2+2*Math.cos(a);
                 laser={x1:x2,y1:y2,a:a,x2:laserx2,y2:lasery2};
