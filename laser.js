@@ -100,10 +100,11 @@ function round(x){
 }
 
 /**
- * Checks whether two finite lines intersect, returns point of intersection, angle, distance
+ * Checks whether two finite lines intersect, returns point of intersection, angle, distance. If there is no intersection, returns null
  * 
- * l1 laser
- * l2 mirror
+ * @param l1 laser {x1,y1,x2,y2}
+ * @param l2 mirror {x1,y1,x2,y2}
+ * @returns {x,y,d,a} or null
  **/
 function getIntersection(l1,l2){
     var m1,m2,b1,b2,xi,yi,a,d;
@@ -137,7 +138,7 @@ function getIntersection(l1,l2){
             return {x:xi,y:yi,a:a,d:d};
         }
         else{
-            return 'nowhere';
+            return null;
         }        
     }
     //If mirror is vertical, but laser isn't
@@ -150,16 +151,16 @@ function getIntersection(l1,l2){
             return {x:xi,y:yi,a:a,d:d};
         }
         else{
-            return 'nowhere';
+            return null;
         }
     }
     //If mirror and laser are parallel
     if (m1==m2){
         if (b1==b2){
-            return 'nowhere';//'everywhere';
+            return null;//'everywhere';
         }
         else{
-            return 'nowhere';
+            return null;
         }
     }
     else{
@@ -171,10 +172,10 @@ function getIntersection(l1,l2){
             return {x:xi,y:yi,a:a,d:d};
         }
         else{
-            return 'nowhere';
+            return null;
         }
     }
-    return 'nowhere';
+    return null;
 }
 
 //Draw canvas
@@ -335,7 +336,7 @@ function draw(){
                 for (j=0;j<mirrortriangles[i].lines.length;j++){
                     if (lasthit===null || lasthit.t!=0 || lasthit.i!=i){
                         intersection=getIntersection(laser,mirrortriangles[i].lines[j]);
-                        if (intersection!='nowhere'){                       
+                        if (intersection!=null){                       
                             if (earliestHit==null || intersection.d<earliestHit.d){
                                 newLasthit={t:0,i:i,j:j};
                                 earliestHit=intersection;
@@ -348,7 +349,7 @@ function draw(){
                 for (j=0;j<mirrorsquares[i].lines.length;j++){
                     if (lasthit===null || lasthit.t!=1 || lasthit.i!=i){                                                
                         intersection=getIntersection(laser,mirrorsquares[i].lines[j]);
-                        if (intersection!='nowhere'){
+                        if (intersection!=null){
                             if (earliestHit==null || intersection.d<earliestHit.d){
                                 newLasthit={t:1,i:i,j:j};
                                 earliestHit=intersection;
@@ -361,7 +362,7 @@ function draw(){
                 for (j=0;j<blocks[i].lines.length;j++){
                     if (lasthit===null || lasthit.t!=2 || lasthit.i!=i){                        
                         intersection=getIntersection(laser,blocks[i].lines[j]);
-                        if (intersection!='nowhere'){
+                        if (intersection!=null){
                             if (earliestHit==null || intersection.d<earliestHit.d){
                                 newLasthit={t:2,i:i,j:j};
                                 earliestHit=intersection;
@@ -376,7 +377,7 @@ function draw(){
                 for (j=0;j<sinks[i].lines.length;j++){
                     if (lasthit===null || lasthit.t!=2 || lasthit.i!=i){                        
                         intersection=getIntersection(laser,sinks[i].lines[j]);
-                        if (intersection!='nowhere'){
+                        if (intersection!=null){
                             if (earliestHit==null || intersection.d<earliestHit.d){
                                 newLasthit={t:2,i:i,j:j};
                                 earliestHit=intersection;
