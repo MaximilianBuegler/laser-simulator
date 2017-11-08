@@ -1,13 +1,15 @@
 # laser-simulator
-Little Javascript Laser/Mirror/Reflection Simulator
+Little Javascript Laser/Mirror/Reflection Simulator using HTML5 Canvas in your browser.
 
 ![Screenshot](https://raw.githubusercontent.com/MaximilianBuegler/laser-simulator/master/res/screenshot.png)
 
 # Intro
 I wrote this little laser simulator for a small side project of mine. It is meant to simulate a real life laser puzzle. All mirrors are meant to be mosaic tiles of equal size, assembled into squares and rectangles. Lasers are meant to hit sinks. This is to be acchieved by rotating the mirror pieces. Blocks prevent easy solutions.
 
-# Demo
+# Live Demo
 [Link](http://maxbuegler.eu/laser-simulator/)
+
+# Configuration
 
 All measures are ratios of the full canvas. The size of a mirror tile can be defined as follows:
 ```
@@ -30,6 +32,8 @@ var mirrorsquares=[{x:0.7,y:0.5,a:0},{x:0.3,y:0.5,a:0},{x:0.3,y:0.7,a:0},{x:0.5,
 var blocks=[{x:0.3,y:0.6,w:0.4,h:0.01}];
 var sinks=[{x:0.4,y:1,a:0}];
 ```
+
+# Execution
 
 Once you open index.html in your browser, all objects can be dragged and dropped, all objects can be rotated by using the mouse wheel. Lasers update in real time. Once a laser hits a sink its ray turns green. Drag and rotate objects close to their center points.
 
